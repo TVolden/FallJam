@@ -13,7 +13,9 @@ public class ObstaclePlacer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        var children = root.GetComponentsInChildren<ObstacleController>();
+        foreach (var child in children)
+            child.speed = Random.Range(0.5f, 1.0f);
     }
 
     // Update is called once per frame
