@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class ObstaclePlacer : MonoBehaviour
+public class ObstaclePlacer : NetworkBehaviour
 {
     public Vector2 speedRange = new Vector2(0.25f, 0.75f);
     public Transform root;
@@ -12,6 +13,7 @@ public class ObstaclePlacer : MonoBehaviour
     public Transform bottomRight;
 
     // Start is called before the first frame update
+    [ServerCallback]
     void Start()
     {
         var children = root.GetComponentsInChildren<ObstacleController>();

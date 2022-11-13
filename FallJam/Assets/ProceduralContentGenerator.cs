@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class ProceduralContentGenerator : MonoBehaviour
+public class ProceduralContentGenerator : NetworkBehaviour
 {
     public Transform obstacles;
 
@@ -14,6 +15,7 @@ public class ProceduralContentGenerator : MonoBehaviour
     }
 
     // Update is called once per frame
+    [ServerCallback]
     void Update()
     {
         var children = obstacles.GetComponentsInChildren<ObstacleController>();
