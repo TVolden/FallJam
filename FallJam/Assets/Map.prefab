@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf58b640b5e6034da9af3c5d9f3de13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedRange: {x: 1, y: 5}
   root: {fileID: 63979562378915973}
   topLeft: {fileID: 2159960801075348299}
   bottomLeft: {fileID: 1940549904804941609}
@@ -1227,6 +1228,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 63979562378915973}
     m_Modifications:
+    - target: {fileID: 3482099102729790540, guid: 52d758a317af7f54da7e548d121b37d4, type: 3}
+      propertyPath: top
+      value: 
+      objectReference: {fileID: 2159960801075348299}
+    - target: {fileID: 3482099102729790540, guid: 52d758a317af7f54da7e548d121b37d4, type: 3}
+      propertyPath: bottom
+      value: 
+      objectReference: {fileID: 1940549904804941609}
     - target: {fileID: 8562143844408971546, guid: 52d758a317af7f54da7e548d121b37d4, type: 3}
       propertyPath: m_Name
       value: Obstacle

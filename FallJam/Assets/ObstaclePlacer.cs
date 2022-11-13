@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObstaclePlacer : MonoBehaviour
 {
+    public Vector2 speedRange = new Vector2(0.25f, 0.75f);
     public Transform root;
     public Transform topLeft;
     public Transform bottomLeft;
@@ -15,18 +16,17 @@ public class ObstaclePlacer : MonoBehaviour
     {
         var children = root.GetComponentsInChildren<ObstacleController>();
         foreach (var child in children)
-            child.speed = Random.Range(0.5f, 1.0f);
+        {
+            child.speed = Random.Range(speedRange.x, speedRange.y);
+            child.top = topLeft;
+            child.bottom = bottomLeft;
+            child.bottom2 = bottomRight;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        var children = root.GetComponentsInChildren<ObstacleController>();
-        foreach (var child in children)
-        {
-            var left = child.vertical * topLeft.position + (1-child.vertical) * bottomLeft.position;
-            var right = child.vertical * topRight.position + (1-child.vertical) * bottomRight.position;
-            child.transform.position = child.horizontal * left + (1 - child.horizontal) * right;
-        }
+
     }
 }

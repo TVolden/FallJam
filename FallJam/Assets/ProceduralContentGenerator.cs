@@ -21,8 +21,8 @@ public class ProceduralContentGenerator : MonoBehaviour
         {
             if (child.vertical > 1)
             {
-                child.vertical = 0;
                 child.horizontal = Random.Range(0.0f, 1.0f);
+                child.MoveToBottom();
             }
         }
     }
