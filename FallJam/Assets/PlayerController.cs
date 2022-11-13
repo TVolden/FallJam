@@ -20,11 +20,23 @@ public class PlayerController : NetworkBehaviour
         if (!isLocalPlayer) { return; }
         moveX = Input.GetAxis("Horizontal") * speed;
         transform.Translate(moveX, 0, 0);
-
+        
         var v = placer.GetVertical(transform.position);
         if (v > 1 || v < 0)
         {
             Debug.Log("You dead!");
         }
     }
+
+    [ServerCallback]
+    void LateUpdate()
+    {
+        var v = placer.GetVertical(transform.position);
+        if (v > 1 || v < 0)
+        {
+            NetworkServer.Destroy(gameObject);
+        }
+    }
+
+
 }
