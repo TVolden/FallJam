@@ -3,16 +3,27 @@ using UnityEngine;
 
 public class ColorSetter : NetworkBehaviour
 {
+    // [ServerCallback]
+    // public void Start()
+    // {
+
+    // }
+
+    // [ServerCallback]
+    // public void Awake()
+    // {
+
+    // }
+
     public void Update()
     {
-      Color color = new Color(0f, 0f, 1f);
-      NetworkIdentity identity = GetComponent<NetworkIdentity>();
-      if (identity.connectionToClient.connectionId == 0)
+      Color color = Color.blue;
+      NetworkIdentity identity = transform.parent.GetComponent<NetworkIdentity>();
+      if (identity.connectionToClient.connectionId != 0)
       {
-        color = new Color(1f, 0f, 0);
+        color = Color.red;
       }
-      Material playerMaterialClone = new Material(GetComponent<Renderer>().material);
-      playerMaterialClone.color = color;
-      GetComponent<Renderer>().material = playerMaterialClone;
+      Material material = GetComponent<Renderer>().material;
+      material.color = color;
     }
 }
