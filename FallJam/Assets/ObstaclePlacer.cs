@@ -20,13 +20,27 @@ public class ObstaclePlacer : NetworkBehaviour
         for (int i = 0; i < 10; i++) {
             ObstacleController obstacle = Instantiate(ObstacleController);
             obstacle.speed = Random.Range(speedRange.x, speedRange.y);
-            obstacle.top = topLeft;
-            obstacle.bottom = bottomLeft;
-            obstacle.bottom2 = bottomRight;
+            obstacle.placer = this;
             obstacle.transform.parent = root;
+            obstacle.vertical = 0;
+            obstacle.horizontal = Random.Range(0.1f, 0.9f);
             obstacle.MoveToBottom();
             NetworkServer.Spawn(obstacle.gameObject);
         }
+    }
+
+    internal Vector3 GetPosition(float horizontal, float vertical)
+    {
+        var left = vertical * topLeft.position + (1 - vertical) * bottomLeft.position;
+        var right = vertical * topRight.position + (1 - vertical) * bottomRight.position;
+        return horizontal * left + (1 - horizontal) * right;
+    }
+
+    internal float GetVertical(Vector3 position)
+    {
+        var v = topLeft.position - bottomLeft.position;
+        var p = Vector3.Project(position - bottomLeft.position, v);
+        return p.magnitude / v.magnitude;
     }
 
     // Update is called once per frame
