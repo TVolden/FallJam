@@ -606,6 +606,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3963073984813099371, guid: 6232b87635a09944992d3cd7b41f8ec4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5187569951687073350, guid: 6232b87635a09944992d3cd7b41f8ec4, type: 3}
       propertyPath: sceneId
       value: 3693960006
@@ -613,6 +617,10 @@ PrefabInstance:
     - target: {fileID: 6086104235324869136, guid: 6232b87635a09944992d3cd7b41f8ec4, type: 3}
       propertyPath: sceneId
       value: 3110263486
+      objectReference: {fileID: 0}
+    - target: {fileID: 6924744267057559200, guid: 6232b87635a09944992d3cd7b41f8ec4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6942966659858249176, guid: 6232b87635a09944992d3cd7b41f8ec4, type: 3}
       propertyPath: sceneId
