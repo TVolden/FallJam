@@ -11,18 +11,21 @@ public class ObstaclePlacer : NetworkBehaviour
     public Transform bottomLeft;
     public Transform topRight;
     public Transform bottomRight;
+    public ObstacleController ObstacleController;
 
     // Start is called before the first frame update
     [ServerCallback]
     void Start()
     {
-        var children = root.GetComponentsInChildren<ObstacleController>();
-        foreach (var child in children)
-        {
-            child.speed = Random.Range(speedRange.x, speedRange.y);
-            child.top = topLeft;
-            child.bottom = bottomLeft;
-            child.bottom2 = bottomRight;
+        for (int i = 0; i < 10; i++) {
+            ObstacleController obstacle = Instantiate(ObstacleController);
+            obstacle.speed = Random.Range(speedRange.x, speedRange.y);
+            obstacle.top = topLeft;
+            obstacle.bottom = bottomLeft;
+            obstacle.bottom2 = bottomRight;
+            obstacle.transform.parent = root;
+            obstacle.MoveToBottom();
+            NetworkServer.Spawn(obstacle.gameObject);
         }
     }
 
